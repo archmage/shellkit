@@ -1,3 +1,4 @@
+OPTIONS=name:Kara
 OPTIONS=boulder:0
 OPTIONS=msg_window:c
 OPTIONS=number_pad:1

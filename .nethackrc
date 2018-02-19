@@ -1,11 +1,16 @@
 OPTIONS=name:Kara
+OPTIONS=altmeta
+OPTIONS=autodig
 OPTIONS=boulder:0
 OPTIONS=msg_window:c
 OPTIONS=number_pad:1
+OPTIONS=showexp
+OPTIONS=time
 OPTIONS=color
 OPTIONS=hilite_pet
 OPTIONS=autopickup
-OPTIONS=pickup_types:$?!/(
+OPTIONS=pickup_types:$"%?+!=/*
+OPTIONS=disclose:yi ya yv yg yc yo
 AUTOPICKUP_EXCEPTION=">chest"
 AUTOPICKUP_EXCEPTION=">box"
 AUTOPICKUP_EXCEPTION=">worthless?"

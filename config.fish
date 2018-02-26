@@ -52,6 +52,10 @@ function fish_prompt
     printf "\n==> "
 end
 
+function fish_greeting 
+    quote
+end 
+
 # This is mathematically incorrect, but whatever.
 function zodiac_current
     set monthnum (date +%m)
@@ -66,12 +70,23 @@ end
 
 # Get a quote from the quotes file.
 function quote
-    set quotecount (eval wc -l < $quotefile)
-    set daynum (date +%j)
-    set quoteindex (math "$daynum % $quotecount")
+    # grep lines matching ".*" to find quote count
+    set quotecount (grep "\".*\"" < $quotefile | wc -l)
+
+    # better scheduled quotes using num of days from epoch
+    set secsfromepoch (date +%s)
+    set daysfromepoch (math "$secsfromepoch / 86400")
+    set quoteindex (math "$daysfromepoch % $quotecount")
+
+    # if $quoteerandom, use a random quote instead
     if math "$quoterandom==1" > /dev/null
         set quoteindex (random 1 $quotecount)
     end
-    set quotetext (eval sed -n "$quoteindex""p" < $quotefile)
-    printf "$quotetext"
+
+    # parse quote and source at index using grep
+    set quotetext (grep "\".*\"" < $quotefile | sed -n "$quoteindex""p")
+    set quotesrc (grep "\-.*" < $quotefile | sed -n "$quoteindex""p")
+
+    # print!
+    printf "$quotetext\n $quotesrc"
 end

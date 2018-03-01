@@ -1,7 +1,8 @@
-OPTIONS=name:Kara
+OPTIONS=name:Archmage
 OPTIONS=altmeta
 OPTIONS=autodig
 OPTIONS=boulder:0
+OPTIONS=!cmdassist
 OPTIONS=msg_window:c
 OPTIONS=number_pad:1
 OPTIONS=showexp
@@ -13,6 +14,7 @@ OPTIONS=pickup_types:$"%?+!=/*
 OPTIONS=disclose:yi ya yv yg yc yo
 AUTOPICKUP_EXCEPTION=">chest"
 AUTOPICKUP_EXCEPTION=">box"
+AUTOPICKUP_EXCEPTION="> rock"
 AUTOPICKUP_EXCEPTION=">worthless?"
 AUTOPICKUP_EXCEPTION=">corpse"
 

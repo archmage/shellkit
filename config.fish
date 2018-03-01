@@ -90,3 +90,8 @@ function quote
     # print!
     printf "$quotetext\n $quotesrc"
 end
+
+function reassure
+    echo "You are a problem-solver. Your job is to solve problems, and you are good at"
+    echo "solving problems. Every obstacle is just a problem to be solved. You can do it!"
+end

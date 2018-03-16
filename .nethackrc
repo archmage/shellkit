@@ -32,6 +32,8 @@ AUTOPICKUP_EXCEPTION=">box"
 AUTOPICKUP_EXCEPTION="> rock"
 AUTOPICKUP_EXCEPTION=">worthless?"
 AUTOPICKUP_EXCEPTION=">corpse"
+AUTOPICKUP_EXCEPTION=">gray stone"
+AUTOPICKUP_EXCEPTION=">lode"
 
 # Menucolors - thanks, Eidolos!
 

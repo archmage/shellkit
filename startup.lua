@@ -21,7 +21,7 @@ local function set_prompt_filter()
     -- get hostname
     local handle = io.popen("hostname")
     local hostname = handle:read("*a")
-    hostname = hostname:sub(0, hostname:len() - 2)
+    hostname = hostname:sub(0, hostname:len() - 1)
     handle:close()
 
     -- kara's custom prompt ^_^

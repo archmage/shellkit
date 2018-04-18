@@ -10,7 +10,7 @@ set -gx LSCOLORS gxfxcxdxbxegedabagacad
 # Quotes things
 
 # - quotefile: the source file used for quotes
-set -g quotefile /Users/kara/quotes
+set -g quotefile /Users/$USER/quotes
 # - quoterandom: whether to pick a random quote
 #                default is "day number" % quotetotal
 set -g quoterandom 1

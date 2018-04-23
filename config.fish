@@ -44,12 +44,9 @@ function fish_prompt
     printf $PWD"/ "             # Current path
     # printf (basename $PWD)/   # Current directory
 
-    # Git branch
-    set_color 00A900
-   
     # Homestuck prompt :)
     set_color 00A900
-    printf "\n==> "
+    printf "\n╚═> "
 end
 
 function fish_greeting 
@@ -61,6 +58,7 @@ function zodiac_current
     set monthnum (date +%m)
     set signs "♑︎" "♒︎" "♓︎" "♈︎" "♉︎" "♊︎" "♋︎" "♌︎" "♍︎" "♎︎" "♏︎" "♐︎"
     printf $signs[$monthnum]
+    printf " "
 end
 
 # For fun!

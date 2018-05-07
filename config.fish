@@ -17,32 +17,42 @@ set -g quoterandom 1
 
 # Set prompt!
 function fish_prompt
-    # Zodiac symbol!
-    set_color 4EDDCE
-    zodiac_current
+    # powerline-shell --shell bare $status
+    # printf "\n"
 
+    # Zodiac symbol!
+    set_color -b DD2E26
+    set_color FFFFFF
+    zodiac_current
+    
     # Username.
-    set_color DD2E26
-    printf $USER
+    set_color -b DD2E26
+    printf $USER" "
 
     # ...belonging to... 
-    set_color B190D1
-    printf "~"
+    set_color  DD2E26
+    set_color -b AC00D1
+    printf " "
     
     # ...this hostname.
-    set_color AC00D1
+    set_color FFFFFF 
     printf (hostname -s | tr '[:upper:]' '[:lower:]')" "
     
-    # Trivial things
-    # if math "1 > 0" > /dev/null
-    #     set_color 4EDDCE
-    #     zodiac_current
-    # end
-    
+    # More arrows.
+    set_color AC00D1
+    set_color -b D9D036
+    printf " "
+
     # Location!
-    set_color D9D036
+    set_color -b D9D036
+    set_color 000000
     printf $PWD"/ "             # Current path
     # printf (basename $PWD)/   # Current directory
+
+    # Even more arrows.
+    set_color --background=normal
+    set_color D9D036
+    printf " " 
 
     # Homestuck prompt :)
     set_color 00A900
@@ -58,7 +68,6 @@ function zodiac_current
     set monthnum (date +%m)
     set signs "♑︎" "♒︎" "♓︎" "♈︎" "♉︎" "♊︎" "♋︎" "♌︎" "♍︎" "♎︎" "♏︎" "♐︎"
     printf $signs[$monthnum]
-    printf " "
 end
 
 # For fun!

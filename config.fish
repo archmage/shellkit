@@ -20,17 +20,23 @@ function fish_prompt
     # powerline-shell --shell bare $status
     # printf "\n"
 
+    # detect SSH
+    set -l usercolor DD2E26 # DD2E26
+    if test -n "$SSH_CLIENT" -o -n "$SSH_TTY"
+        set -l usercolor 3D7EE5 # DD2E26
+    end
+
     # Zodiac symbol!
-    set_color -b DD2E26
+    set_color -b $usercolor
     set_color FFFFFF
     printf " ""♊︎" 
 
     # Username.
-    set_color -b DD2E26
+    set_color -b $usercolor
     printf $USER" "
 
     # ...belonging to... 
-    set_color  DD2E26
+    set_color $usercolor
     set_color -b AC00D1
     printf " "
     

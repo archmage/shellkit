@@ -20,10 +20,10 @@ function fish_prompt
     # powerline-shell --shell bare $status
     # printf "\n"
 
-    # detect SSH
-    set -l usercolor DD2E26 # DD2E26
+    set usercolor DD2E26
+
     if test -n "$SSH_CLIENT" -o -n "$SSH_TTY"
-        set -l usercolor 3D7EE5 # DD2E26
+        set usercolor 3D7EE5
     end
 
     # Zodiac symbol!

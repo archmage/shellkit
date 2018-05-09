@@ -10,7 +10,7 @@ set -gx LSCOLORS gxfxcxdxbxegedabagacad
 # Quotes things
 
 # - quotefile: the source file used for quotes
-set -g quotefile /Users/$USER/quotes
+set -g quotefile ~/quotes
 # - quoterandom: whether to pick a random quote
 #                default is "day number" % quotetotal
 set -g quoterandom 1
@@ -23,8 +23,8 @@ function fish_prompt
     # Zodiac symbol!
     set_color -b DD2E26
     set_color FFFFFF
-    zodiac_current
-    
+    printf " ""♊︎" 
+
     # Username.
     set_color -b DD2E26
     printf $USER" "
@@ -43,10 +43,26 @@ function fish_prompt
     set_color -b D9D036
     printf " "
 
+    # get the current dir nicely ... replace $HOME with "~"
+    set -l realhome ~
+    set -l dir (string replace -r '^'"$realhome"'($|/)' '~$1' $PWD)
+
+    # start with the "full" directory
+    set -l pl1 "[$USER] $dir"
+
+    # get the length
+    set -l pl1_len (string length $pl1)
+    set -l pl1_len (math "$pl1_len+20")
+
+    if test "$pl1_len" -gt "$COLUMNS"
+      # too long, use the shortened version of dir instead
+      set dir (prompt_pwd)
+    end
+
     # Location!
     set_color -b D9D036
     set_color 000000
-    printf $PWD"/ "             # Current path
+    printf $dir" "             # Current path
     # printf (basename $PWD)/   # Current directory
 
     # Even more arrows.

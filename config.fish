@@ -21,9 +21,10 @@ function fish_prompt
     # printf "\n"
 
     set usercolor DD2E26
+    set hostcolor AC00D1
 
     if test -n "$SSH_CLIENT" -o -n "$SSH_TTY"
-        set usercolor 3D7EE5
+        set hostcolor 3D7EE5
     end
 
     # Zodiac symbol!
@@ -37,7 +38,7 @@ function fish_prompt
 
     # ...belonging to... 
     set_color $usercolor
-    set_color -b AC00D1
+    set_color -b $hostcolor
     printf " "
     
     # ...this hostname.
@@ -45,7 +46,7 @@ function fish_prompt
     printf (hostname -s | tr '[:upper:]' '[:lower:]')" "
     
     # More arrows.
-    set_color AC00D1
+    set_color $hostcolor
     set_color -b D9D036
     printf " "
 

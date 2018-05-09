@@ -10,39 +10,65 @@ set -gx LSCOLORS gxfxcxdxbxegedabagacad
 # Quotes things
 
 # - quotefile: the source file used for quotes
-set -g quotefile /Users/$USER/quotes
+set -g quotefile ~/quotes
 # - quoterandom: whether to pick a random quote
 #                default is "day number" % quotetotal
 set -g quoterandom 1
 
 # Set prompt!
 function fish_prompt
+    # powerline-shell --shell bare $status
+    # printf "\n"
+
     # Zodiac symbol!
-    set_color 4EDDCE
-    zodiac_current
+    set_color -b DD2E26
+    set_color FFFFFF
+    printf " ""♊︎" 
 
     # Username.
-    set_color DD2E26
-    printf $USER
+    set_color -b DD2E26
+    printf $USER" "
 
     # ...belonging to... 
-    set_color B190D1
-    printf "~"
+    set_color  DD2E26
+    set_color -b AC00D1
+    printf " "
     
     # ...this hostname.
-    set_color AC00D1
+    set_color FFFFFF 
     printf (hostname -s | tr '[:upper:]' '[:lower:]')" "
     
-    # Trivial things
-    # if math "1 > 0" > /dev/null
-    #     set_color 4EDDCE
-    #     zodiac_current
-    # end
-    
+    # More arrows.
+    set_color AC00D1
+    set_color -b D9D036
+    printf " "
+
+    # get the current dir nicely ... replace $HOME with "~"
+    set -l realhome ~
+    set -l dir (string replace -r '^'"$realhome"'($|/)' '~$1' $PWD)
+
+    # start with the "full" directory
+    set -l pl1 "[$USER] $dir"
+
+    # get the length
+    set -l pl1_len (string length $pl1)
+    set -l pl1_len (math "$pl1_len+20")
+
+    if test "$pl1_len" -gt "$COLUMNS"
+      # too long, use the shortened version of dir instead
+      set dir (prompt_pwd)
+    end
+
     # Location!
-    set_color D9D036
-    printf $PWD"/ "             # Current path
+    set_color -b D9D036
+    set_color 000000
+    printf $dir" "             # Current path
     # printf (basename $PWD)/   # Current directory
+
+    # Even more arrows.
+    set_color --background=normal
+    set_color D9D036
+    printf " " 
 
     # Homestuck prompt :)
     set_color 00A900
@@ -58,7 +84,6 @@ function zodiac_current
     set monthnum (date +%m)
     set signs "♑︎" "♒︎" "♓︎" "♈︎" "♉︎" "♊︎" "♋︎" "♌︎" "♍︎" "♎︎" "♏︎" "♐︎"
     printf $signs[$monthnum]
-    printf " "
 end
 
 # For fun!

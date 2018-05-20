@@ -118,10 +118,27 @@ function quote
     set quotesrc (grep "\-.*" < $quotefile | sed -n "$quoteindex""p")
 
     # print!
-    printf "$quotetext\n $quotesrc"
+    echo "$quotetext"
+    echo "$quotesrc"
 end
 
 function reassure
     echo "You are a problem-solver. Your job is to solve problems, and you are good at"
     echo "solving problems. Every obstacle is just a problem to be solved. You can do it!"
+end
+
+function pubg-timer
+    set -l blue_wait 300 200 150 120 120 90 90 60 195
+    set -l blue_move 300 140 90 60 40 30 30 30 30
+
+    echo "Pre-circle shenanigans."
+    sleep 120
+
+    for circle in (seq 9)
+        set index (eval math $circle)
+        echo "Circle #"$circle" has appeared!"
+        sleep $blue_wait[$index]
+        echo "Blue is coming in!"
+        sleep $blue_move[$index]
+    end 
 end

@@ -1,6 +1,6 @@
-# Kara's fish config file
+# Archmage's fish config file
 # Created on 2018-02-12
-# Last updated on 2018-02-16
+# Last updated on 2019-03-19
 
 # Global variables!
 
@@ -108,7 +108,7 @@ function quote
     set quoteindex (math "$daysfromepoch % $quotecount")
 
     # if $quoteerandom, use a random quote instead
-    if math "$quoterandom==1" > /dev/null
+    if test $quoterandom -eq 1
         set quoteindex (random 1 $quotecount)
     end
 
@@ -124,20 +124,4 @@ end
 function reassure
     echo "You are a problem-solver. Your job is to solve problems, and you are good at"
     echo "solving problems. Every obstacle is just a problem to be solved. You can do it!"
-end
-
-function pubg-timer
-    set -l blue_wait 300 200 150 120 120 90 90 60 195
-    set -l blue_move 300 140 90 60 40 30 30 30 30
-
-    echo "Pre-circle shenanigans."
-    sleep 120
-
-    for circle in (seq 9)
-        set index (eval math $circle)
-        echo "Circle #"$circle" has appeared!"
-        sleep $blue_wait[$index]
-        echo "Blue is coming in!"
-        sleep $blue_move[$index]
-    end 
 end
